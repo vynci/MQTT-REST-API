@@ -2,7 +2,9 @@ var Hapi = require('hapi');
 var mqtt = require('mqtt');
 
 var server = new Hapi.Server();
-server.connection({ port: 4444, routes: { cors: true } });
+var port = Number(process.env.PORT || 4444);
+
+server.connection({ port: port, routes: { cors: true } });
 
 var client  = mqtt.connect('mqtt://localhost:1883');
 
